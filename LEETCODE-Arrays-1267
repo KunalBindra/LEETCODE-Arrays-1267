@@ -1,0 +1,32 @@
+class Solution {
+    public int countServers(int[][] grid) {
+        int n=grid.length;
+        int m=grid[0].length;
+        int[] indexcolS=new int[m];
+        int[] indexrowS=new int[n];
+
+        for(int i=0;i<n;i++)
+        {
+            for(int j=0;j<m;j++)
+            {
+                if(grid[i][j]==1)
+                {
+                    indexcolS[j]+=1;
+                    indexrowS[i]+=1;
+                }
+            }
+        }
+        int count=0;
+        for(int row=0;row<n;row++)
+        {
+            for(int col=0;col<m;col++)
+            {
+                if(grid[row][col]==1 && (indexrowS[row]>1 || indexcolS[col] >1))
+                {
+                    count++;
+                }
+            }
+        }
+return count;
+    }
+}
